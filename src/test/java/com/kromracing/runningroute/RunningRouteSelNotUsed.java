@@ -15,9 +15,12 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 /**
  * Tests the Running Route website from the browser level.
  * 
+ * This was the first test created to figure out how it's done.
+ * This file is no longer used!!!
+ * 
  *
  */
-public class RunningRouteSelTest {
+public class RunningRouteSelNotUsed {
     private static final String RUNNING_ROUTE_URL = "http://127.0.0.1:8888/";
     private static final String ROUTE_PALATINE_TRAIL
         = "#c=42.121448,-88.016517&z=16&s=42.115841,-88.012043&v=s42.115921,-88.012333&v=s42.11629,-88.0122&v=f42.12076,-88.00957&v=f42.12428,-88.00966&v=f42.12478,-88.01458&v=f42.12483,-88.02229&v=s42.125729,-88.022268";
@@ -40,6 +43,7 @@ public class RunningRouteSelTest {
         final Browser browser = Browser.FF;
         switch (browser) {
         case FF:
+            System.setProperty("webdriver.gecko.driver", "D:\\\\eclipse\\webdrivers\\geckodriver.exe");
             driver = new FirefoxDriver();
             break;
         case IE:
@@ -55,7 +59,7 @@ public class RunningRouteSelTest {
     @After
     public void tearDown() throws Exception {
         if (driver != null) {
-            driver.close();
+            driver.quit();
             driver = null;
         }
     }

@@ -2,10 +2,11 @@ package com.kromracing.runningroute;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import com.kromracing.runningroute.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { 
-    BasicTests.class,
+    BasicTest.class,
     UrlTests.class,
     SearchTests.class,
     UndoNewTests.class,

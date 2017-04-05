@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  */
 public class Common {
-    protected static final String RUNNING_ROUTE_URL = "http://localhost:8888/RunningRoute.html";
+    protected static final String RUNNING_ROUTE_URL = "file:///D:/Git/running-route/target/running-route-1.4-SNAPSHOT/RunningRoute.html";
+    //protected static final String RUNNING_ROUTE_URL = "http://localhost:8888/RunningRoute.html";
     //protected static final String RUNNING_ROUTE_URL = "http://kromracing.com/RunningRoute.html";
     protected static final String ROUTE_PALATINE_TRAIL
         = "#c=42.121448,-88.016517&z=16&s=42.115841,-88.012043&v=s42.115921,-88.012333&v=s42.11629,-88.0122&v=f42.12076,-88.00957&v=f42.12428,-88.00966&v=f42.12478,-88.01458&v=f42.12483,-88.02229&v=s42.125729,-88.022268";
@@ -33,6 +35,7 @@ public class Common {
     protected static enum Browser {
         IE,
         FF,
+        HTMLUnit,
     }
 
     /**
@@ -40,18 +43,23 @@ public class Common {
      * @throws Exception
      */
     @Before
-    public void setUp() throws Exception {        
-        final Browser browser = Browser.IE;
+    public void setUp() throws Exception {      
+        
+        final Browser browser = Browser.FF;
         switch (browser) {
         case FF:
+            System.setProperty("webdriver.gecko.driver", "D:\\\\eclipse\\webdrivers\\geckodriver.exe");
             driver = new FirefoxDriver();
             break;
         case IE:
+            System.setProperty("webdriver.ie.driver", "D:\\\\eclipse\\webdrivers\\IEDriverServer.exe");
             driver = new InternetExplorerDriver();
             break;
+        case HTMLUnit:
+            driver = new HtmlUnitDriver();
         }        
-
-        homePage = new HomePage(driver);
+        
+        homePage = new HomePage(driver);        
     }
     
     /**
@@ -61,7 +69,8 @@ public class Common {
     @After
     public void tearDown() throws Exception {
         if (driver != null) {
-            driver.close();
+            //driver.close();
+            driver.quit();
             driver = null;
         }
     }

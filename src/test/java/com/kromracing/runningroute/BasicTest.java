@@ -1,18 +1,20 @@
 package com.kromracing.runningroute;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 /**
  * Performs some very basic tests.  Such as verifying buttons are on the screen.
  * 
  */
-public class BasicTests extends Common {
+public class BasicTest extends Common {
     /**
      * Verify the basic elements are on the webpage.
      * @throws Exception
      */
     @Test
-    public void testBasicElements() throws Exception {                  
+    public void testBasicElements() throws Exception {
        driver.get(RUNNING_ROUTE_URL);
        
        // Verify location controls are on the screen.
