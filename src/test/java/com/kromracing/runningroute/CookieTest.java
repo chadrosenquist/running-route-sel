@@ -11,14 +11,16 @@ import org.openqa.selenium.WebElement;
  * or cookies.
  *
  */
-public class CookieTests extends Common {
+public class CookieTest extends Common {
     @Test
     public void testFollowRoadNo() throws Exception {
-        driver.get(RUNNING_ROUTE_URL);
+        driver.get(RUNNING_ROUTE_URL);  
         
+        waitForPageLoad();
         final WebElement checkBoxBefore = homePage.followRoadCheckbox();
         unCheckCheckBox(checkBoxBefore);
         driver.navigate().refresh();
+        waitForPageLoad();
         final WebElement checkBoxAfter = homePage.followRoadCheckbox();
         assertEquals(false, checkBoxAfter.isSelected());
     }
@@ -27,10 +29,12 @@ public class CookieTests extends Common {
     public void testFollowRoadYes() throws Exception {
         driver.get(RUNNING_ROUTE_URL);
         
+        waitForGoogleLong();
         final WebElement checkBoxBefore = homePage.followRoadCheckbox();
         unCheckCheckBox(checkBoxBefore);
         checkBoxBefore.click();
         driver.navigate().refresh();
+        waitForPageLoad();
         final WebElement checkBoxAfter = homePage.followRoadCheckbox();
         assertEquals(true, checkBoxAfter.isSelected());
     }
