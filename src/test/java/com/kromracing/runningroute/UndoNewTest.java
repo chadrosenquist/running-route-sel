@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
  * Tests undo and new.
  * 
  */
-public class UndoNewTests extends Common {  
+public class UndoNewTest extends Common {  
     /**
      * Loads a short route and repeatedly calls undo.
      * @throws Exception
@@ -18,7 +18,7 @@ public class UndoNewTests extends Common {
     public void testUndo() throws Exception {
         driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
                 
-        waitForPageLoad();
+        waitForGoogleLong();
         final WebElement undoButton = homePage.undoButton();
         undoButton.click();
         waitForPageLoad();
@@ -44,7 +44,7 @@ public class UndoNewTests extends Common {
         driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
                 
         // click new route
-        waitForPageLoad();
+        waitForGoogleLong();
         homePage.newRouteButton().click();
 
         // Verify alert with correct message.

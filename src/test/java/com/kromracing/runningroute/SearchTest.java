@@ -2,6 +2,8 @@ package com.kromracing.runningroute;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
@@ -10,32 +12,47 @@ import org.openqa.selenium.WebElement;
  * Tests the search functionalities.
  * 
  */
-public class SearchTests extends Common {
+public class SearchTest extends Common {
     /**
-     * Searches for various cities and verifies the center in the URL is correct.
+     * Searches for NYC and verifies the center in the URL is correct.
      * @throws Exception
      */
     @Test
-    public void testSearch() throws Exception {
+    public void testSearchNewYorkCity() throws Exception {
         // Set zoom to 16 for this test case.
         driver.get(RUNNING_ROUTE_URL + "#z=16");
         
         final WebElement locationTextbox = homePage.locationTextbox();
         
         // New York City
+        waitForPageLoad();  // Wait for page to load.
         locationTextbox.clear();
         locationTextbox.sendKeys("10001");
         homePage.searchButton().click();
-        waitForPageLoad();
+        waitForPageLoad();  // Wait for new page to load after click.
         assertEquals("c=40.753685,-73.999164&z=16", getRouteInUrl());
+    }
+    
+    /**
+     * Searches for Menlo Park, CA and verifies the center in the URL is correct.
+     * @throws Exception
+     */
+    @Test
+    public void testSearchMenloPark() throws Exception {
+        // Set zoom to 16 for this test case.
+        driver.get(RUNNING_ROUTE_URL + "#z=16");
+        
+        final WebElement locationTextbox = homePage.locationTextbox();
         
         // Menlo Park, CA
         locationTextbox.clear();
+        waitForPageLoad();  // Wait for page to load.
         locationTextbox.sendKeys("Menlo Park, CA");
         homePage.searchButton().click();
-        waitForPageLoad();
-        assertEquals("c=37.453827,-122.182187&z=16", getRouteInUrl());     
+        waitForPageLoad();  // Wait for new page to load after click.
+        assertEquals("c=37.45296,-122.181725&z=16", getRouteInUrl());
     }
+    
     
     /**
      * Enters an invalid location and verifies there is a popup dialog.
@@ -47,6 +64,7 @@ public class SearchTests extends Common {
         
         final WebElement locationTextbox = homePage.locationTextbox();
         
+        waitForPageLoad();  // Wait for page to load.
         locationTextbox.clear();
         locationTextbox.sendKeys("aflaweljlrj");
         homePage.searchButton().click();                  

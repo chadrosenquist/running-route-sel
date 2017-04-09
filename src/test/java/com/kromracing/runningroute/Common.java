@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  */
 public class Common {
-    protected static final String RUNNING_ROUTE_URL = "file:///D:/Git/running-route/target/running-route-1.4-SNAPSHOT/RunningRoute.html";
+    protected static final String RUNNING_ROUTE_URL = "file:///D:/Git/running-route/target/running-route-1.4-SNAPSHOT/RunningRoute.html";  // TO DO: Put in config
     //protected static final String RUNNING_ROUTE_URL = "http://localhost:8888/RunningRoute.html";
     //protected static final String RUNNING_ROUTE_URL = "http://kromracing.com/RunningRoute.html";
     protected static final String ROUTE_PALATINE_TRAIL
@@ -45,14 +45,14 @@ public class Common {
     @Before
     public void setUp() throws Exception {      
         
-        final Browser browser = Browser.FF;
+        final Browser browser = Browser.FF; // TO DO: Put in config
         switch (browser) {
         case FF:
-            System.setProperty("webdriver.gecko.driver", "D:\\\\eclipse\\webdrivers\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "D:\\\\eclipse\\webdrivers\\geckodriver.exe"); // TO DO: Put in config
             driver = new FirefoxDriver();
             break;
         case IE:
-            System.setProperty("webdriver.ie.driver", "D:\\\\eclipse\\webdrivers\\IEDriverServer.exe");
+            System.setProperty("webdriver.ie.driver", "D:\\\\eclipse\\webdrivers\\IEDriverServer.exe"); // TO DO: Put in config
             driver = new InternetExplorerDriver();
             break;
         case HTMLUnit:
@@ -83,16 +83,18 @@ public class Common {
      * @throws InterruptedException 
      */
     protected void waitForPageLoad() throws InterruptedException {
-        Thread.sleep(1000);        
+        //Thread.sleep(1000);
+        Thread.sleep(1500);
     }
     
     protected void waitForGoogleLong() throws InterruptedException {
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        Thread.sleep(3000);
     }
     
     protected void waitForGoogleReallyLong() throws InterruptedException {
-        Thread.sleep(5000);
-        //Thread.sleep(15000);
+        //Thread.sleep(5000);
+        Thread.sleep(15000);
     }
     
     /**
