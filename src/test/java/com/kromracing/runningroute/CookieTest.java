@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 public class CookieTest extends Common {
     @Test
     public void testFollowRoadNo() throws Exception {
-        driver.get(RUNNING_ROUTE_URL);  
+        driver.get(config.getRunningRouteUrl());  
         
         waitForPageLoad();
         final WebElement checkBoxBefore = homePage.followRoadCheckbox();
@@ -27,7 +27,7 @@ public class CookieTest extends Common {
     
     @Test
     public void testFollowRoadYes() throws Exception {
-        driver.get(RUNNING_ROUTE_URL);
+        driver.get(config.getRunningRouteUrl());
         
         waitForGoogleLong();
         final WebElement checkBoxBefore = homePage.followRoadCheckbox();

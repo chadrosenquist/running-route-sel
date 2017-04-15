@@ -2,8 +2,6 @@ package com.kromracing.runningroute;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
@@ -20,7 +18,7 @@ public class SearchTest extends Common {
     @Test
     public void testSearchNewYorkCity() throws Exception {
         // Set zoom to 16 for this test case.
-        driver.get(RUNNING_ROUTE_URL + "#z=16");
+        driver.get(config.getRunningRouteUrl() + "#z=16");
         
         final WebElement locationTextbox = homePage.locationTextbox();
         
@@ -40,7 +38,7 @@ public class SearchTest extends Common {
     @Test
     public void testSearchMenloPark() throws Exception {
         // Set zoom to 16 for this test case.
-        driver.get(RUNNING_ROUTE_URL + "#z=16");
+        driver.get(config.getRunningRouteUrl() + "#z=16");
         
         final WebElement locationTextbox = homePage.locationTextbox();
         
@@ -60,7 +58,7 @@ public class SearchTest extends Common {
      */
     @Test
     public void testLocationNotFound() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + "#z=10");
+        driver.get(config.getRunningRouteUrl() + "#z=10");
         
         final WebElement locationTextbox = homePage.locationTextbox();
         

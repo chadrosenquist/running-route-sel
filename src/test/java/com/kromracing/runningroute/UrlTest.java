@@ -18,7 +18,7 @@ public class UrlTest extends Common {
      */
     @Test
     public void testLoadUrl() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_PALATINE_TRAIL);
+        driver.get(config.getRunningRouteUrl() + ROUTE_PALATINE_TRAIL);
         
         waitForGoogleLong();
         assertDistanceEqualsMiles(1.40);        
@@ -31,7 +31,7 @@ public class UrlTest extends Common {
      */
     @Test
     public void testUrlParamNoEqual() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + "#noequalssign");        
+        driver.get(config.getRunningRouteUrl() + "#noequalssign");        
         alertVerifyTextAndAccept("Failed to load route from URL: noequalssign in the URL is invalid.");
     }
     
@@ -41,7 +41,7 @@ public class UrlTest extends Common {
      */
     @Test
     public void testUrlInvalidZoom() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + "#z=abc");
+        driver.get(config.getRunningRouteUrl() + "#z=abc");
         alertVerifyTextAndAccept("Failed to load route from URL: z in z=abc is not a valid zoom level.");
     }
     
@@ -51,7 +51,7 @@ public class UrlTest extends Common {
      */
     @Test
     public void testUrlInvalidVertex() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + "#v=a42.11629,-88.0122");
+        driver.get(config.getRunningRouteUrl() + "#v=a42.11629,-88.0122");
         alertVerifyTextAndAccept("Failed to load route from URL: a in v=a42.11629,-88.0122 in the URL is invalid.");
     }
     
@@ -61,7 +61,7 @@ public class UrlTest extends Common {
      */
     @Test
     public void testUrlInvalidName() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + "#garbage=bad");
+        driver.get(config.getRunningRouteUrl() + "#garbage=bad");
         alertVerifyTextAndAccept("Failed to load route from URL: garbage in garbage=bad in the URL is invalid.");
     }
     
@@ -73,7 +73,7 @@ public class UrlTest extends Common {
      */
     //@Test
     public void testTooManyQueriesBug() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + TOO_MANY_QUERIES_ROUTE);
+        driver.get(config.getRunningRouteUrl() + TOO_MANY_QUERIES_ROUTE);
         
         //waitForGoogleLong();
         waitForGoogleReallyLong();

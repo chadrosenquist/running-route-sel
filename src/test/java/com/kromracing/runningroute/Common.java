@@ -19,9 +19,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  */
 public class Common {
-    protected static final String RUNNING_ROUTE_URL = "file:///D:/Git/running-route/target/running-route-1.4-SNAPSHOT/RunningRoute.html";  // TO DO: Put in config
-    //protected static final String RUNNING_ROUTE_URL = "http://localhost:8888/RunningRoute.html";
-    //protected static final String RUNNING_ROUTE_URL = "http://kromracing.com/RunningRoute.html";
     protected static final String ROUTE_PALATINE_TRAIL
         = "#c=42.121448,-88.016517&z=16&s=42.115841,-88.012043&v=s42.115921,-88.012333&v=s42.11629,-88.0122&v=f42.12076,-88.00957&v=f42.12428,-88.00966&v=f42.12478,-88.01458&v=f42.12483,-88.02229&v=s42.125729,-88.022268";
     protected static final String ROUTE_TWIN_LAKES_SHORT
@@ -32,31 +29,31 @@ public class Common {
     protected WebDriver driver = null;
     protected HomePage homePage = null;
     
-    protected static enum Browser {
-        IE,
-        FF,
-        HTMLUnit,
-    }
-
+    protected Config config = null;
+    
     /**
      * Create the WebDriver
      * @throws Exception
      */
     @Before
-    public void setUp() throws Exception {      
+    public void setUp() throws Exception {
+        // Read in the config for this Selenium run.
+        config = Config.ConfigBuilder.buildDefault();
         
-        final Browser browser = Browser.FF; // TO DO: Put in config
-        switch (browser) {
+        switch (config.getBrowser()) {
         case FF:
-            System.setProperty("webdriver.gecko.driver", "D:\\\\eclipse\\webdrivers\\geckodriver.exe"); // TO DO: Put in config
+            System.setProperty("webdriver.gecko.driver", config.getFirefoxDriverLocation());
             driver = new FirefoxDriver();
             break;
         case IE:
-            System.setProperty("webdriver.ie.driver", "D:\\\\eclipse\\webdrivers\\IEDriverServer.exe"); // TO DO: Put in config
+            System.setProperty("webdriver.ie.driver", config.getIEDriverLocation());
             driver = new InternetExplorerDriver();
             break;
         case HTMLUnit:
             driver = new HtmlUnitDriver();
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid Browser enum!");
         }        
         
         homePage = new HomePage(driver);        

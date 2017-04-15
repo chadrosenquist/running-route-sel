@@ -13,7 +13,7 @@ public class BasicTest extends Common {
      */
     @Test
     public void testBasicElements() throws Exception {
-       driver.get(RUNNING_ROUTE_URL);
+       driver.get(config.getRunningRouteUrl());
        
        // Verify location controls are on the screen.
        homePage.locationLabel();

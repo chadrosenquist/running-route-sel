@@ -16,7 +16,7 @@ public class UndoNewTest extends Common {
      */
     @Test
     public void testUndo() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
+        driver.get(config.getRunningRouteUrl() + ROUTE_TWIN_LAKES_SHORT);
                 
         waitForGoogleLong();
         final WebElement undoButton = homePage.undoButton();
@@ -41,7 +41,7 @@ public class UndoNewTest extends Common {
      */
     @Test
     public void testNewRoute() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
+        driver.get(config.getRunningRouteUrl() + ROUTE_TWIN_LAKES_SHORT);
                 
         // click new route
         waitForGoogleLong();
@@ -60,7 +60,7 @@ public class UndoNewTest extends Common {
      */
     @Test
     public void testNewRouteCancel() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_PALATINE_TRAIL);
+        driver.get(config.getRunningRouteUrl() + ROUTE_PALATINE_TRAIL);
         waitForGoogleLong();
         
         homePage.newRouteButton().click();
@@ -80,7 +80,7 @@ public class UndoNewTest extends Common {
      */
     @Test(expected=WebDriverException.class)
     public void testNewRouteNoRoute() {
-        driver.get(RUNNING_ROUTE_URL);
+        driver.get(config.getRunningRouteUrl());
         
         homePage.newRouteButton().click();
         try {

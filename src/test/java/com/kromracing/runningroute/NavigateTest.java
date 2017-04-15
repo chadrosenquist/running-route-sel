@@ -15,7 +15,7 @@ public class NavigateTest extends Common {
      */
     @Test
     public void testBack() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
+        driver.get(config.getRunningRouteUrl() + ROUTE_TWIN_LAKES_SHORT);
         
         waitForGoogleLong();
         final WebElement undoButton = homePage.undoButton();
@@ -36,7 +36,7 @@ public class NavigateTest extends Common {
      */
     @Test
     public void testBackAnotherSite() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
+        driver.get(config.getRunningRouteUrl() + ROUTE_TWIN_LAKES_SHORT);
         waitForGoogleLong();
         driver.navigate().to("http://www.google.com");
         driver.navigate().back();
@@ -50,7 +50,7 @@ public class NavigateTest extends Common {
      */
     @Test
     public void testRefresh() throws Exception {
-        driver.get(RUNNING_ROUTE_URL + ROUTE_TWIN_LAKES_SHORT);
+        driver.get(config.getRunningRouteUrl() + ROUTE_TWIN_LAKES_SHORT);
         waitForGoogleLong();
         driver.navigate().refresh();
         waitForPageLoad();
