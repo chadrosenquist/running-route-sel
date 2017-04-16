@@ -1,5 +1,5 @@
 # running-route-sel
-Selenium tests for Running Route.
+Selenium tests for [Running Route](https://github.com/chadrosenquist/running-route).
 
 # WebDriver Installation
 You must install WebDrivers for the browsers.
@@ -23,3 +23,22 @@ private static final Browser DEFAULT_BROWSER = Browser.FF;
 private static final String DEFAULT_FIREFOX_DRIVER_LOCATION = "D:\\\\eclipse\\webdrivers\\geckodriver.exe";
 private static final String DEFAULT_IE_DRIVER_LOCATION = "D:\\\\eclipse\\webdrivers\\IEDriverServer.exe";
 ```
+
+# Run
+`mvn test`
+
+
+# Design
+The Selenium test files are located at:
+
+`src/test/java/com/kromracing/runningroute`
+
+* Common.java - Provides functionality to test RunningRoute that is common to all test cases.
+* HomePage.java - Tests use this class to access elements found on the home page.
+* BasicTest.java - Verifies all the elements are on the home page.
+* UrlTest.java - Tests loading the route from a URL.
+* SearchTest.java - Tests the search functionality.
+* UndoNewTest.java - Tests the "undo" and "new" buttons.
+* NavigateTests.java - Tests browser navigation buttons - refresh and back.
+* CookieTest.java - Tests cookies are correctly saved.
+ 
